@@ -1,0 +1,82 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace FitnessTracker
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            /* Prompt the user for minutes exercised
+             * Add minutes exercied into total
+             * Display total minutes exercised to the screen
+             * Repeat until the user quits
+             */
+            String response = "";
+            double totalTime = 0;
+           
+            while (true)
+            {
+
+                Console.WriteLine("How many minutes did you exercise, or type 'quit' to exit?");
+
+                response = Console.ReadLine();
+
+                if (response.ToLower() == "quit")
+                {
+                   
+                    Console.WriteLine("Goodbye...");
+                    break;
+
+                }
+
+                try {
+
+                   //var minutes/ could change to as a placeholder 
+                    double minutes = double.Parse(response);
+
+                        if (minutes <= 0)
+                        {
+                            Console.WriteLine(minutes + " is not an acceptable number.  :(");
+                            continue;
+                        }
+                        else if (minutes <= 10)
+                        {
+                            Console.WriteLine("Keep going you can do more!");
+                        }
+                        else if (minutes <= 30)
+                        {
+                            Console.WriteLine("Is that all you got?!");
+                        }
+                        else if (minutes <= 60)
+                        {
+                            Console.WriteLine("Push yourself a bit more!");
+                        }
+                        else
+                        {
+                            Console.WriteLine("No way, that's Amazing!!");
+                        }
+
+                        //add amount of minutes to total
+                        totalTime += minutes;
+
+                    }
+                    catch(FormatException) {
+
+                        Console.WriteLine("That was not a number!, Please try again");
+                        continue;
+                    }
+                   
+
+                    //display the total time exercised
+                    Console.WriteLine("The total time you spent exercising was... " + totalTime + " minutes");
+                             
+            }
+
+        }
+
+    }
+}
